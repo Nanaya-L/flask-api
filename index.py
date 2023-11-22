@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__, template_folder='templates')
 
@@ -23,8 +24,13 @@ def login():
         return {"status": "error"}
 
 
-port = app.config.from_envvar(variable_name="PORT")
+port = os.getenv("PORT")
 
+
+if port == None:
+    port = 5000
+
+print(port)
 
 if __name__ == '__main__':
     app.run(port=port, debug=True)
