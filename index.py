@@ -2,6 +2,15 @@ from flask import Flask, render_template, request
 import os
 
 app = Flask(__name__, template_folder='templates')
+port = os.getenv("PORT")
+admin = os.getenv("admin")
+adminPassword = os.getenv("password")
+
+if admin == None:
+    admin = "admin"
+
+if adminPassword == None:
+    adminPassword = "123456"
 
 
 @app.route('/', methods=['GET'])
@@ -11,20 +20,16 @@ def hello():
 
 @app.route("/api/login", methods=["POST"])
 def login():
-
     data = request.form
     username = data["username"]
     password = data["password"]
 
     # Validar os dados de login
 
-    if username == "admin" and password == "123456":
-        return {"status": "success"}
+    if username == admin and password == adminPassword:
+        return render_template('mainPage.html')
     else:
-        return {"status": "error"}
-
-
-port = os.getenv("PORT")
+        return render_template('unauthorized.html')
 
 
 if port == None:
