@@ -23,5 +23,8 @@ def login():
         return {"status": "error"}
 
 
+port = app.config.from_envvar(variable_name="PORT")
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=port, debug=True)
