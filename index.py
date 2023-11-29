@@ -1,10 +1,15 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+import pickle
 import os
 
 app = Flask(__name__, template_folder='templates')
 port = os.getenv("PORT")
 admin = os.getenv("admin")
 adminPassword = os.getenv("password")
+
+dt_model = pickle.load(open('./ML_Models/finalized_dt_model.sav', 'rb'))
+knn_model = pickle.load(open('./ML_Models/finalized_knn_model.sav', 'rb'))
+svm_model = pickle.load(open('./ML_Models/finalized_svm_model.sav', 'rb'))
 
 if admin == None:
     admin = "admin"
@@ -30,6 +35,35 @@ def login():
         return render_template('mainPage.html')
     else:
         return render_template('unauthorized.html')
+
+
+@app.route("/predict/model", methods=["POST"])
+def predict():
+    data = request.form
+    # ph	Hardness	Solids	Chloramines	Sulfate	Conductivity	Organic_carbon	Trihalomethanes	Turbidity
+    ph = data["ph"]
+    Hardness = data["Hardness"]
+    Solids = data["Solids"]
+    Chloramines = data["Chloramines"]
+    Sulfate = data["Sulfate"]
+    Conductivity = data["Conductivity"]
+    Organic_carbon = data["Organic_carbon"]
+    Trihalomethanes = data["Trihalomethanes"]
+    Turbidity = data["Turbidity"]
+
+    print([[float(ph), float(Hardness), float(Solids), float(Chloramines), float(Sulfate), float(
+        Conductivity), float(Organic_carbon), float(Trihalomethanes), float(Turbidity)]])
+
+    knn_result = knn_model.predict(
+        [[float(ph), float(Hardness), float(Solids), float(Chloramines), float(Sulfate), float(Conductivity), float(Organic_carbon), float(Trihalomethanes), float(Turbidity)]])
+
+    dt_result = dt_model.predict(
+        [[float(ph), float(Hardness), float(Solids), float(Chloramines), float(Sulfate), float(Conductivity), float(Organic_carbon), float(Trihalomethanes), float(Turbidity)]])
+
+    svm_result = svm_model.predict(
+        [[float(ph), float(Hardness), float(Solids), float(Chloramines), float(Sulfate), float(Conductivity), float(Organic_carbon), float(Trihalomethanes), float(Turbidity)]])
+
+    return jsonify(knn_result=str(knn_result), dt_result=str(dt_result), svm_result=str(svm_result))
 
 
 if port == None:

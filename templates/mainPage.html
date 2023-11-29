@@ -33,6 +33,28 @@
     <div class="container">
       <h1>Login bem-sucedido</h1>
       <p>Você está logado!</p>
+
+      <form action="/predict/model" method="post">
+        <input type="number" name="ph" placeholder="PH" />
+        <input type="number" name="Hardness" placeholder="Dureza" />
+        <input type="number" name="Solids" placeholder="Nível de sólidos" />
+        <input type="number" name="Chloramines" placeholder="Cloraminas" />
+        <input type="number" name="Sulfate" placeholder="Sulfato" />
+        <input type="number" name="Conductivity" placeholder="Condutividade" />
+        <input
+          type="number"
+          name="Organic_carbon"
+          placeholder="Carbono orgânico"
+        />
+        <input
+          type="number"
+          name="Trihalomethanes"
+          placeholder="Trihalometanos"
+        />
+        <input type="number" name="Turbidity" placeholder="Turbidez" />
+        <input type="submit" value="Validar água" />
+      </form>
+
       <a href="javascript:history.back()">Ir para a página de login</a>
     </div>
   </body>
