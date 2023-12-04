@@ -17,7 +17,12 @@ if admin == None:
 if adminPassword == None:
     adminPassword = "123456"
 
-
+def validateVars(vars):
+    for var in vars:
+        if(vars[var]== ''):
+            return True
+    return False
+        
 @app.route('/', methods=['GET'])
 def hello():
     return render_template('login.html')
@@ -40,6 +45,10 @@ def login():
 @app.route("/predict/model", methods=["POST"])
 def predict():
     data = request.form
+    validVars = validateVars(data)
+    if validVars == True:
+        return render_template('mainPage.html')
+
     # ph	Hardness	Solids	Chloramines	Sulfate	Conductivity	Organic_carbon	Trihalomethanes	Turbidity
     ph = data["ph"]
     Hardness = data["Hardness"]
@@ -63,8 +72,13 @@ def predict():
     svm_result = svm_model.predict(
         [[float(ph), float(Hardness), float(Solids), float(Chloramines), float(Sulfate), float(Conductivity), float(Organic_carbon), float(Trihalomethanes), float(Turbidity)]])
 
-    return jsonify(knn_result=str(knn_result), dt_result=str(dt_result), svm_result=str(svm_result))
-
+    template_data = {
+        'knn_result': str(knn_result),
+        'dt_result': str(dt_result),
+        'svm_result': str(svm_result)
+        }
+    #return jsonify(knn_result=str(knn_result), dt_result=str(dt_result), svm_result=str(svm_result))
+    return render_template('response.html', **template_data)
 
 if port == None:
     port = 5000

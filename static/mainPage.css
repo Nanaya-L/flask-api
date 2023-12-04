@@ -1,0 +1,81 @@
+
+/*==============RESETE==============*/
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ul{
+ list-style: none; 
+}
+a{
+  text-decoration: none;
+}
+img{
+  width: 100%;
+  height:auto;
+}
+/*============== Base ==============*/
+body{
+  background-color: #5DCCFC;
+  
+}
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 10px;
+}
+.header{
+  font-family: 'Outfit', sans-serif;
+  font-family: 'Patrick Hand SC', cursive;
+  color: #fff;
+  font-weight: 900;
+}
+
+.title{
+  font-size: 48px;
+  margin-bottom: 2rem;
+  
+}
+.subtitle{
+  font-size: 28px;
+}
+.footer{
+  background-size: 100%;
+}
+.midWrapper{
+  background-image: url('waterGirls.png');
+  background-repeat: no-repeat;
+  background-position-y: 90%;
+  margin-top: 2rem;
+}
+.formWrapper{
+  background:#fff; 
+  border-radius:3px;
+  max-width: 400px;
+  margin: auto;
+  padding:1em;
+
+  
+
+}
+.formOption{
+  
+
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+  border: 3px solid rgb(8, 8, 8);
+  padding: 0.8em;
+}
+.backImg{
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    z-index: -1;
+}

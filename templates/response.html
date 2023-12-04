@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login bem-sucedido</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='response.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">Qualidade da água com base nos parametros passados</h1>
+        <p class="subtitle">de acordo com os três modelos treinados a avaliação da sua água conforme cada uma deles</p>
+      </header>
+      <div class="midWrapper">
+        <div class="cards">
+                {% if knn_result == "[0]" %}
+                    <img class="cardImg" src="../static/waterBota.png" alt="">
+                    <h3 class="cardTitle">Não Potável</h3>
+                    <p class="cardText" >Baseado no modelo de KNN (K-nearest neighbors).</p>
+                {% elif knn_result == "[1]" %}
+                <img class="cardImg" src="../static/waterBota2.png" alt="">
+                <h3 class="cardTitle">Potável</h3>
+                <p class="cardText" >Notícia boa!! baseado no modelo KNN (K-nearest neighbors).</p>
+                {% endif %}
+            
+        </div>
+        <div class="cards">
+                {% if dt_result == "[0]" %}
+                    <img class="cardImg" src="../static/waterBota.png" alt="">
+                    <h3 class="cardTitle">Não Potável</h3>
+                    <p class="cardText" >Baseado no modelo DT (DecisionTree).</p>
+                {% elif dt_result == "[1]" %}
+                    <img class="cardImg" src="../static/waterBota2.png" alt="">
+                    <h3 class="cardTitle">Potável</h3>
+                    <p class="cardText" >Notícia boa!! baseado no modelo DT (DecisionTree).</p>
+                {% endif %}
+        </div>
+        <div class="cards">
+                {% if svm_result == "[0]" %}
+                    <img class="cardImg" src="../static/waterBota.png" alt="">
+                    <h3 class="cardTitle">Não Potável</h3>
+                    <p class="cardText" >Baseado no modelo Svm (Support Vector Machine).</p>
+                {% elif svm_result == "[1]" %}
+                    <img class="cardImg" src="../static/waterBota2.png" alt="">
+                    <h3 class="cardTitle">Potável</h3>
+                    <p class="cardText" >Notícia boa!! baseado no modelo Svm (Support Vector Machine).</p>
+                {% endif %}
+        </div>
+    </div>
+  </body>
+  <div class="backImg">
+    <img src="{{ url_for('static', filename='CloudsBack.png') }}" alt="">
+</div>
+</html>

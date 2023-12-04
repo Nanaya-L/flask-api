@@ -3,50 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>Página de Login</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        background-color: #ffffff;
-      }
-
-      .container {
-        width: 300px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .header {
-        text-align: center;
-      }
-
-      .form {
-        margin-top: 20px;
-      }
-
-      input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-      }
-
-      input[type="submit"] {
-        background-color: #000;
-        color: #ffffff;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
   </head>
   <body>
     <div class="container">
-      <div class="header">
-        <h1>Login</h1>
-      </div>
-      <div class="form">
-        <form action="/api/login" method="post">
-          <input type="text" name="username" placeholder="Usuário" />
-          <input type="password" name="password" placeholder="Senha" />
-          <input type="submit" value="Entrar" />
+      <div class="page">
+        <form class="formLogin" action="/api/login" method="post">
+          <img class="formImg" src="../static/waterBota2.png" alt="">
+          <h1 class="formTitle">Bem-vindo!</h1>
+          <input class="form-control" type="text" name="username" placeholder="Usuário" />
+          <input class="form-control" type="password" name="password" placeholder="Senha" />
+          <input class="form-control" type="submit" value="Entrar" />
         </form>
       </div>
     </div>

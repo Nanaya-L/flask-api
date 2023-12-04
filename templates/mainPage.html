@@ -3,59 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <title>Login bem-sucedido</title>
-    <style>
-      body {
-        background-color: #eee;
-        font-family: sans-serif;
-      }
-
-      .container {
-        width: 300px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      p {
-        margin-bottom: 10px;
-      }
-
-      a {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    </style>
-  </head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mainpage.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;700&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+    </head>
   <body>
     <div class="container">
-      <h1>Login bem-sucedido</h1>
-      <p>Você está logado!</p>
-
-      <form action="/predict/model" method="post">
-        <input type="number" name="ph" placeholder="PH" />
-        <input type="number" name="Hardness" placeholder="Dureza" />
-        <input type="number" name="Solids" placeholder="Nível de sólidos" />
-        <input type="number" name="Chloramines" placeholder="Cloraminas" />
-        <input type="number" name="Sulfate" placeholder="Sulfato" />
-        <input type="number" name="Conductivity" placeholder="Condutividade" />
-        <input
-          type="number"
-          name="Organic_carbon"
-          placeholder="Carbono orgânico"
-        />
-        <input
-          type="number"
-          name="Trihalomethanes"
-          placeholder="Trihalometanos"
-        />
-        <input type="number" name="Turbidity" placeholder="Turbidez" />
-        <input type="submit" value="Validar água" />
-      </form>
-
-      <a href="javascript:history.back()">Ir para a página de login</a>
+      <header class="header">
+        <h1 class="title">Verificador de qualidade da água</h1>
+        <p class="subtitle">Insira os dados para a verificação da potabilidade da sua água</p>
+      </header>
+      <div class="midWrapper">
+        <Div class='formWrapper'>
+          <form action="/predict/model" method="post">
+            <input step=".000001" class="formOption" type="number" name="ph" placeholder="PH" />
+            <input step=".000001" class="formOption" type="number" name="Hardness" placeholder="Dureza" />
+            <input step=".000001" class="formOption" type="number" name="Solids" placeholder="Nível de sólidos" />
+            <input step=".000001" class="formOption" type="number" name="Chloramines" placeholder="Cloraminas" />
+            <input step=".000001" class="formOption" type="number" name="Sulfate" placeholder="Sulfato" />
+            <input step=".000001" class="formOption" type="number" name="Conductivity" placeholder="Condutividade" />
+            <input step=".000001" class="formOption"
+              type="number"
+              name="Organic_carbon"
+              placeholder="Carbono orgânico"
+            />
+            <input step=".000001" class="formOption"
+              type="number"
+              name="Trihalomethanes"
+              placeholder="Trihalometanos"
+            />
+            <input step=".000001" class="formOption" type="number" name="Turbidity" placeholder="Turbidez" />
+            <input class="formOption" type="submit" value="Validar água" />
+          </form>
+        </Div>
+      </div>
     </div>
+    
   </body>
+  <footer class="footer">
+    <img class="backImg" src="{{ url_for('static', filename='CloudsBack.png') }}" alt="">
+  </footer>
 </html>

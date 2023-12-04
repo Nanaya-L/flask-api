@@ -1,0 +1,84 @@
+/*==============RESETE==============*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  ul{
+   list-style: none; 
+  }
+  a{
+    text-decoration: none;
+  }
+  img{
+    width: 100%;
+    height:auto;
+  }  
+  body{
+    background-color: #5DCCFC;
+
+  }
+  header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 10px;
+  }
+  .header{
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Patrick Hand SC', cursive;
+    color: #fff;
+    font-weight: 900;
+  }
+  
+  .title{
+    font-size: 48px;
+    margin-bottom: 2rem;
+    
+  }
+  .subtitle{
+    font-size: 28px;
+  }
+  .midWrapper{
+    display: flex;
+    justify-content: space-around ;
+    align-items: center;
+  }
+  .cards{
+    font-family: 'Outfit', sans-serif;
+    font-family: 'Patrick Hand SC', cursive;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px 5px 0 5px;
+    width: 20%;
+    height: 30rem;
+    margin-top: 5rem;
+    border-radius: 30px;
+  }
+  .cardImg{
+    margin-top: 10px;
+    width: 80%;
+    height: 60%;
+  }
+  .cardTitle{
+    font-size: 30px;
+    margin-top: 10px;
+    font-weight: 700;
+  }
+  .cardText{
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .backImg{
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    z-index: 0;
+
+  }
